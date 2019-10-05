@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "895865182156",
+    "firebase_url": "https://acad-me.firebaseio.com",
+    "project_id": "acad-me",
+    "storage_bucket": "acad-me.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:895865182156:android:a9e970afce4dc7e3d32f69",
+        "android_client_info": {
+          "package_name": "br.com.gv.acad_me"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "895865182156-m228fi16hisehr756qg7lvp3b76o23p2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.gv.acad_me",
+            "certificate_hash": "719e48e13eaf7e16c1a836af4f066830619d1328"
+          }
+        },
+        {
+          "client_id": "895865182156-g0s3fa8836d8ph6tqbvdfjcibajnjj63.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDz8Bt7uBEyVv7OxVp9K_Y19KG5qVHgS0s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "895865182156-g0s3fa8836d8ph6tqbvdfjcibajnjj63.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
