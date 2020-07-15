@@ -67,10 +67,18 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.white,
         body: Center(
           child: Padding(
-            padding: const EdgeInsets.all(30.0),
+            padding: const EdgeInsets.all(24.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 64, top: 41
+                  ),
+                  child: Image.asset(
+                    "images/logo.png",
+                    alignment: Alignment.topCenter,
+                  ),
+                ),
                 Text(
                   "Gabriel",
                   style: TextStyle(
@@ -97,7 +105,34 @@ class _HomeState extends State<Home> {
             ),
           ),
         ));
+
+        class Navbar extends StatefulWidget {
+          @override
+          _NavbarState createState() => _NavbarState();
+        }
+        
+
   }
+
+          class _NavbarState extends State<Navbar> {
+          @override
+          Widget build(BuildContext context) {
+            return Container();
+            BottomNavigationBar: BottomNavigationBar(
+              items:[
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home),
+                  title: Text('Home')
+                ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.photo),
+              title: Text('Perfil')
+                ),
+              ]
+
+            ),
+          }
+        };
 
   _registrarDevice() async {
     String tk = await _fbm.getToken();
