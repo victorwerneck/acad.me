@@ -4,7 +4,6 @@ import 'package:acad_me/widgets/teste.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:barcode_scan/barcode_scan.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 final GoogleSignIn _googleSignIn = GoogleSignIn();
@@ -31,10 +30,9 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final FirebaseMessaging _fbm = FirebaseMessaging();
-  void chamarqrcode(){
+  void chamarqrcode() {
     debugPrint('CHANGING SCREEN...');
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => Test()));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Test()));
   }
 
   @override
@@ -50,9 +48,7 @@ class _HomeState extends State<Home> {
                 actions: <Widget>[
                   FlatButton(
                     child: Text("Fechar"),
-                    onPressed: () {
-                     
-                    },
+                    onPressed: () {},
                   )
                 ],
               ));
@@ -62,7 +58,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     RoundedRectangleBorder shape;
-    
+
     return Scaffold(
         backgroundColor: Colors.white,
         body: Center(
@@ -72,8 +68,7 @@ class _HomeState extends State<Home> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 64, top: 41
-                  ),
+                  padding: const EdgeInsets.only(bottom: 64, top: 41),
                   child: Image.asset(
                     "images/logo.png",
                     alignment: Alignment.topCenter,
@@ -92,11 +87,15 @@ class _HomeState extends State<Home> {
                   child: Container(
                     child: Column(
                       children: <Widget>[
-                        CustomButton(nomeButton: "Dados da matrícula",),
-                        CustomButton(nomeButton: "Escanear código", ),
-                        CustomButton(nomeButton: "Convidar amigo",),
-                        
-
+                        CustomButton(
+                          nomeButton: "Dados da matrícula",
+                        ),
+                        CustomButton(
+                          nomeButton: "Escanear código",
+                        ),
+                        CustomButton(
+                          nomeButton: "Convidar amigo",
+                        ),
                       ],
                     ),
                   ),
@@ -105,34 +104,7 @@ class _HomeState extends State<Home> {
             ),
           ),
         ));
-
-        class Navbar extends StatefulWidget {
-          @override
-          _NavbarState createState() => _NavbarState();
-        }
-        
-
   }
-
-          class _NavbarState extends State<Navbar> {
-          @override
-          Widget build(BuildContext context) {
-            return Container();
-            BottomNavigationBar: BottomNavigationBar(
-              items:[
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
-                  title: Text('Home')
-                ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.photo),
-              title: Text('Perfil')
-                ),
-              ]
-
-            ),
-          }
-        };
 
   _registrarDevice() async {
     String tk = await _fbm.getToken();
