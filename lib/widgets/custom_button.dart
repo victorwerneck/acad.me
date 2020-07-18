@@ -4,9 +4,9 @@ import 'package:flutter/services.dart';
 
 class CustomButton extends StatefulWidget {
   final String nomeButton;
-  final VoidCallback testeqrcode;
+  final VoidCallback onClick;
 
-  CustomButton({@required this.nomeButton, this.testeqrcode});
+  CustomButton({@required this.nomeButton, this.onClick});
 
   @override
   _CustomButtonState createState() => _CustomButtonState();
@@ -19,24 +19,22 @@ class _CustomButtonState extends State<CustomButton> {
       String qrResult = await BarcodeScanner.scan();
     } on PlatformException catch (ex) {
       if (ex.code == BarcodeScanner.CameraAccessDenied) {
-        
         setState(() {
           result = "Camera permission was denied";
         });
-      }
-      else{
+      } else {
         setState(() {
           result = "Error";
         });
       }
-    } on FormatException{
+    } on FormatException {
       setState(() {
-          result = "Fez porra nenhuma nessa merda! Burrão";
-        });
-    } catch(ex){
+        result = "Fez porra nenhuma nessa merda! Burrão";
+      });
+    } catch (ex) {
       setState(() {
-          result = "Erro desconhecido";
-        });
+        result = "Erro desconhecido";
+      });
     }
   }
 
@@ -55,7 +53,7 @@ class _CustomButtonState extends State<CustomButton> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(4.0),
           ),
-          onPressed: _scanQR),
+          onPressed: widget.onClick != null ? widget.onClick : () {}),
     );
   }
 }
