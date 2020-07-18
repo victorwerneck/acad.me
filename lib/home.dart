@@ -1,10 +1,13 @@
 import 'dart:io';
+import 'package:acad_me/sign_in.dart';
 import 'package:acad_me/widgets/custom_button.dart';
 import 'package:acad_me/widgets/teste.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
+import 'helpers/authentication.dart';
 
 final GoogleSignIn _googleSignIn = GoogleSignIn();
 final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -24,6 +27,10 @@ Future<FirebaseUser> _handleSignIn() async {
 }
 
 class Home extends StatefulWidget {
+  final FirebaseUser user;
+
+  Home({@required this.user});
+
   @override
   _HomeState createState() => _HomeState();
 }
@@ -38,8 +45,9 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
-    _handleSignIn();
+    // _handleSignIn();
     _registrarDevice();
+    print(widget.user);
     _fbm.configure(onMessage: (Map<String, dynamic> msg) async {
       showDialog(
           context: context,
@@ -75,7 +83,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 Text(
-                  "Gabriel",
+                  widget.user.displayName,
                   style: TextStyle(
                     color: Color(0xff373737),
                     fontSize: 35.0,
@@ -95,6 +103,12 @@ class _HomeState extends State<Home> {
                         ),
                         CustomButton(
                           nomeButton: "Convidar amigo",
+                        ),
+                        CustomButton(
+                          nomeButton: "Sair",
+                          onClick: () {
+                            _logout();
+                          },
                         ),
                       ],
                     ),
@@ -116,5 +130,11 @@ class _HomeState extends State<Home> {
     } else {
       _fbm.subscribeToTopic('android');
     }
+  }
+
+  void _logout() {
+    AuthenticationHelper().signOut();
+    // Navigator.pop(context);
+    Navigator.push(context, MaterialPageRoute(builder: (context) => SignIn()));
   }
 }
